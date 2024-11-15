@@ -52,7 +52,7 @@ bucket_name = 'cndz23737172'
 @app.route('/')
 def index():
     index_html = """
-    <body style="backgorund-color: green">
+    <body style="background-color: green">
     <form method="post" enctype="multipart/form-data" action="/upload" method="post">
     <div>
         <label for="file">Choose file to upload</label>
