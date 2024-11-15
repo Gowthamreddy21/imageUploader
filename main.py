@@ -52,6 +52,7 @@ bucket_name = 'cndz23737172'
 @app.route('/')
 def index():
     index_html = """
+    <body style="backgorund-color: green">
     <form method="post" enctype="multipart/form-data" action="/upload" method="post">
     <div>
         <label for="file">Choose file to upload</label>
@@ -68,7 +69,7 @@ def index():
     for file in list_files():
         index_html += f"<li><a href='/file/{file}'>{file}</a></li>"
 
-    index_html += "</ul>"
+    index_html += "</ul> </body>"
     return render_template_string(index_html)
 
 app.config['UPLOAD_FOLDER'] = 'files'
@@ -189,11 +190,12 @@ def get_file(filename):
             description = texts[1]
             print(title, description)
 
-    view_html = '''
+    view_html = '''<body style="background-color: green">
     <h1>{{ title }}</h1>
     <img src="{{ url_for('serve_image', filename=filename) }}" alt="image">
     <p>{{ description }}</p>
     <a href="{{ url_for('index') }}">back</a>
+    </body>
     '''
 
     return render_template_string(view_html, title=title, description=description, filename=filename)
